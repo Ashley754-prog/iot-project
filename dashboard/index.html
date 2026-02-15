@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Atmospheric Monitoring - Canteen Air Quality</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-content">
+      <h1>Atmospheric Monitoring</h1>
+    </div>
+  </header>
+
+  <div class="dashboard">
+
+      <div class="time-filters">
+        <button class="active">1 hour</button>
+        <button>12 hours</button>
+        <button>24 hours</button>
+        <button>7 days</button>
+        <button>30 days</button>
+        <button>Default</button>
+        <button>Custom</button>
+        <button class="filter-btn">▼ Filter</button>
+      </div>
+
+    <div class="summary-cards">
+      <div class="card co2-goal">
+        <div class="value">100%</div>
+        <div class="label">Percent Time CO₂ Goal Met</div>
+      </div>
+      <div class="card temperature">
+        <div class="value">24.5 °C</div>
+        <div class="label">Temperature</div>
+      </div>
+      <div class="card vent">
+        <div class="value">100%</div>
+        <div class="label">Percent Time CO₂ Goal Met</div>
+      </div>
+      <div class="card pmv">
+        <div class="gauge-container">
+          <div class="gauge">
+            <div class="needle" style="--rotation: -140deg;"></div>
+          </div>
+          <div class="gauge-value">-2.8</div>
+        </div>
+        <div class="label">PMV <span class="status">Too cold</span></div>
+      </div>
+    </div>
+
+    <div class="main-content">
+    <!-- Left: narrower chart -->
+    <div class="chart-panel">
+        <div class="chart-header">
+        <h2>Air Quality History</h2>
+        <select>
+            <option>CO₂</option>
+            <option>PM2.5</option>
+            <option>Temperature</option>
+        </select>
+        </div>
+        <div class="chart-wrapper">
+        <canvas id="co2Chart"></canvas>
+        </div>
+    </div>
+    
+    <div class="right-column">
+        <div class="status-card co2-goal">
+        <div class="value">100%</div>
+        <div class="label">Percent Time CO₂ Goal Met</div>
+        </div>
+
+        <div class="status-card ventilated">
+        <div class="value">100%</div>
+        <div class="label">Adequately ventilated spaces</div>
+        </div>
+
+        <div class="status-card viral low">
+        <div class="value">Low</div>
+        <div class="label">Viral Risk Index</div>
+        </div>
+
+        <div class="status-card mold high">
+        <div class="value">High</div>
+        <div class="label">Mold Risk</div>
+        </div>
+    </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

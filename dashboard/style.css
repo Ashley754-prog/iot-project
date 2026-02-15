@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f5f7fa;
+  color: #1a1a1a;
+  font-size: clamp(14px, 0.8vw, 18px);
+}
+
+.dashboard {
+  height: calc(100vh - 90px); 
+  padding: 1.5rem 2.5rem;
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.topbar {
+  width: 100%;
+  background: linear-gradient(90deg, #6f0f12, #8c1519);
+  padding: 1.4rem 1.2rem;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  display: flex;         
+  align-items: center;    
+  justify-content: flex-start; 
+}
+
+.topbar h1 {
+  color: white;
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0;  
+}
+
+.time-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.time-filters button {
+  padding: 0.5rem 1.1rem;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  background: white;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.time-filters button.active {
+  background: #0066cc;
+  color: white;
+  border-color: #0066cc;
+}
+
+.filter-btn {
+  margin-left: auto;           
+  background: #e9ecef !important;
+  font-weight: 500;             
+  padding: 0.5rem 1.2rem;      
+}
+
+.filter-btn:hover {
+  background: #dee2e6 !important;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.4rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.6rem 1.8rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.card .value {
+  font-size: 3.1rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.card .label {
+  color: #5f6b7a;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.pmv .gauge-container {
+  position: relative;
+  height: 110px;
+  margin: 0.4rem 0 1rem;
+}
+
+.gauge {
+  width: 140px;
+  height: 70px;
+  background: conic-gradient(
+    #d32f2f 0deg 72deg,
+    #ff9800 72deg 144deg,
+    #4caf50 144deg 216deg,
+    #2196f3 216deg 288deg,
+    #9c27b0 288deg 360deg
+  );
+  border-radius: 140px 140px 0 0;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.gauge::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  background: white;
+  border-radius: inherit;
+}
+
+.needle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 70px;
+  background: #333;
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(var(--rotation, -90deg));
+  border-radius: 4px;
+}
+
+.gauge-value {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-top: 0.4rem;
+}
+
+.status {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+.main-content {
+  flex: 1;                     
+  display: grid;
+  grid-template-columns: 11fr 7fr;
+  gap: 1.4rem;                
+  min-height: 0;              
+  align-items: stretch;       
+}
+
+.chart-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 1.6rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-header {
+  flex: 0 0 auto;                   
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.chart-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.chart-header select {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: white;
+}
+
+.chart-wrapper {
+  position: relative;
+  flex: 1;                      
+  min-height: 0;     
+}
+
+.right-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;             
+  gap: 1.4rem;               
+}
+
+.status-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.3rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 140px;                   
+}
+
+.co2-goal .value,
+.ventilated .value {
+  font-size: 3.2rem;
+  color: #2e7d32;
+}
+
+.low .value {
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.10);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 2.8rem;
+}
+
+.high .value {
+  color: #c62828;
+  background: rgba(198, 40, 40, 0.10);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 2.8rem;
+}
+
+.status-card .label {
+  color: #5f6b7a;
+  font-size: 0.98rem;
+  font-weight: bold;
+  margin-top: 0.4rem;
+}
