@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -14,7 +15,7 @@ html, body {
 }
 
 .dashboard {
-  height: calc(100vh - 90px); 
+  height: calc(100vh - 90px);
   padding: 1.5rem 2.5rem;
   max-width: 1920px;
   margin: 0 auto;
@@ -28,10 +29,10 @@ html, body {
   background: linear-gradient(90deg, #6f0f12, #8c1519);
   padding: 1.4rem 1.2rem;
   text-align: center;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
-  display: flex;         
-  align-items: center;    
-  justify-content: flex-start; 
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .topbar h1 {
@@ -39,40 +40,7 @@ html, body {
   font-size: 2.6rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  margin: 0;  
-}
-
-.time-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  width: 100%;
-}
-
-.time-filters button {
-  padding: 0.5rem 1.1rem;
-  border: 1px solid #d1d9e0;
-  border-radius: 6px;
-  background: white;
-  font-size: 0.92rem;
-  cursor: pointer;
-}
-
-.time-filters button.active {
-  background: #0066cc;
-  color: white;
-  border-color: #0066cc;
-}
-
-.filter-btn {
-  margin-left: auto;           
-  background: #e9ecef !important;
-  font-weight: 500;             
-  padding: 0.5rem 1.2rem;      
-}
-
-.filter-btn:hover {
-  background: #dee2e6 !important;
+  margin: 0;
 }
 
 .summary-cards {
@@ -86,7 +54,7 @@ html, body {
   border-radius: 12px;
   padding: 1.6rem 1.8rem;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
 .card .value {
@@ -97,84 +65,382 @@ html, body {
 }
 
 .card .label {
-  color: #5f6b7a;
+  color: #2d333a;
   font-size: 1rem;
-  font-weight: 500;
-}
-
-.pmv .gauge-container {
-  position: relative;
-  height: 110px;
-  margin: 0.4rem 0 1rem;
-}
-
-.gauge {
-  width: 140px;
-  height: 70px;
-  background: conic-gradient(
-    #d32f2f 0deg 72deg,
-    #ff9800 72deg 144deg,
-    #4caf50 144deg 216deg,
-    #2196f3 216deg 288deg,
-    #9c27b0 288deg 360deg
-  );
-  border-radius: 140px 140px 0 0;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-}
-
-.gauge::before {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  background: white;
-  border-radius: inherit;
-}
-
-.needle {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  height: 70px;
-  background: #333;
-  transform-origin: bottom;
-  transform: translateX(-50%) rotate(var(--rotation, -90deg));
-  border-radius: 4px;
-}
-
-.gauge-value {
-  font-size: 2.4rem;
-  font-weight: 700;
-  margin-top: 0.4rem;
-}
-
-.status {
-  color: #d32f2f;
   font-weight: 600;
 }
 
+.card.pm {
+  background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
+  border-top: 6px solid #ef4444;
+}
+
+.card.co2 {
+  background: linear-gradient(145deg, #f0fdf4 0%, #dcfce7 100%);
+  border-top: 6px solid #22c55e;
+}
+
+.card.voc {
+  background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
+  border-top: 6px solid #f59e0b;
+}
+
+.card.gas {
+  background: linear-gradient(145deg, #eff6ff 0%, #dbeafe 100%);
+  border-top: 6px solid #3b82f6;
+}
+
+.card.temperature {
+  background: linear-gradient(145deg, #ecfdf5 0%, #d1fae5 100%);
+  border-top: 6px solid #14b8a6;
+}
+
+.card.pm .value {
+  color: #991b1b;
+}
+
+.card.co2 .value {
+  color: #166534;
+}
+
+.card.voc .value {
+  color: #b45309;
+}
+
+.card.gas .value {
+  color: #1e40af;
+}
+
+.card.temperature .value {
+  color: #0f766e;
+}
+
 .main-content {
-  flex: 1;                     
+  flex: 1;
   display: grid;
-  grid-template-columns: 11fr 7fr;
-  gap: 1.4rem;                
-  min-height: 0;              
-  align-items: stretch;       
+  grid-template-columns: 12fr 7fr;
+  gap: 1.4rem;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.slideshow {
+  position: relative;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2rem 1.8rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  width: 97%;
+  min-height: 250px;
+  overflow: hidden;
+}
+
+.slide.pm .bar {
+  background: linear-gradient(to right, #ef4444, #f87171);
+}
+
+.slide.co2 .bar {
+  background: linear-gradient(to right, #22c55e, #86efac);
+}
+
+.slide.voc .bar {
+  background: linear-gradient(to right, #f59e0b, #fbbf24);
+}
+
+.slide.ozone .bar {
+  background: linear-gradient(to right, #3b82f6, #93c5fd);
+}
+
+.slide.temp-hum .bar {
+  background: linear-gradient(to right, #14b8a6, #5eead4);
+}
+
+.slideshow .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+  text-align: center;
+  padding: 2rem 1.8rem 3.5rem;
+  box-sizing: border-box;
+}
+
+.slideshow .slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.slideshow .slide > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.7s ease-out;
+}
+
+.slideshow .slide.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slideshow .slide.active > *:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.slideshow .slide.active > *:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.slideshow .slide.active > *:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.slideshow .slide.active > *:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.slideshow .slide.active > *:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.slideshow .slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+.slide.pm::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(254, 226, 226, 0.5) 0%,
+    rgba(254, 202, 202, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+.slide.co2::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(220, 252, 231, 0.5) 0%,
+    rgba(187, 247, 208, 0.15) 50%,
+    transparent 100%
+  );
+}
+
+.slide.voc::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(254, 243, 199, 0.5) 0%,
+    rgba(254, 249, 195, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+.slide.ozone::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(219, 234, 254, 0.5) 0%,
+    rgba(191, 219, 254, 0.15) 50%,
+    transparent 100%
+  );
+}
+
+.slide.temp-hum::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(209, 250, 229, 0.5) 0%,
+    rgba(167, 243, 208, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+.slide-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.slide-icon {
+  width: 80px;
+  height: 80px;
+  margin-top: 1rem;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.12));
+}
+
+.slide.pm,
+.slide.co2,
+.slide.voc,
+.slide.ozone,
+.slide.temp-hum {
+  font-size: 2rem;
+}
+
+.main-fact {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.key-facts {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.4rem;
+  font-size: 1.2rem;
+  color: #1d242d;
+}
+
+.key-facts li {
+  margin: 0.6rem 0;
+  padding-left: 1.6rem;
+  position: relative;
+}
+
+.key-facts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  color: #64748b;
+  font-weight: bold;
+}
+
+.risk-indicator {
+  margin: 1.4rem 0;
+}
+
+.slide-bar {
+  height: 16px;
+  background: #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  transition: width 1.4s ease-out;
+}
+
+.bar.safe {
+  background: #22c55e !important;
+}
+
+.bar.moderate {
+  background: #f59e0b !important;
+}
+
+.bar.high {
+  background: #ef4444 !important;
+}
+
+.risk-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.current {
+  text-align: center;
+  margin-top: 0.7rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #1e293b;
+}
+
+.tip {
+  font-size: 1rem;
+  color: #1d242d;
+  font-style: italic;
+  margin-top: 1.2rem;
+  padding: 0.8rem;
+  background: rgba(226, 232, 240, 0.4);
+  border-radius: 10px;
+  border-left: 4px solid #64748b;
+}
+
+.slide-dots {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.9rem;
+  z-index: 10;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #cbd5e1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.dot.active {
+  background: linear-gradient(135deg, #0066cc, #60a5fa, #3b82f6);
+  transform: scale(1.4);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.time-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.time-label {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.time-value {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #1f2937;
+  line-height: 1.1;
 }
 
 .chart-panel {
   background: white;
   border-radius: 12px;
   padding: 1.6rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
   display: flex;
+  margin-top: 5px;
+  width: 560px;
+  height: 300px;
   flex-direction: column;
 }
 
 .chart-header {
-  flex: 0 0 auto;                   
+  flex: 0 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -197,54 +463,6 @@ html, body {
 
 .chart-wrapper {
   position: relative;
-  flex: 1;                      
-  min-height: 0;     
-}
-
-.right-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 1fr;             
-  gap: 1.4rem;               
-}
-
-.status-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.3rem 1.5rem;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 140px;                   
-}
-
-.co2-goal .value,
-.ventilated .value {
-  font-size: 3.2rem;
-  color: #2e7d32;
-}
-
-.low .value {
-  color: #2e7d32;
-  background: rgba(46, 125, 50, 0.10);
-  padding: 0.5rem 1.2rem;
-  border-radius: 8px;
-  font-size: 2.8rem;
-}
-
-.high .value {
-  color: #c62828;
-  background: rgba(198, 40, 40, 0.10);
-  padding: 0.5rem 1.2rem;
-  border-radius: 8px;
-  font-size: 2.8rem;
-}
-
-.status-card .label {
-  color: #5f6b7a;
-  font-size: 0.98rem;
-  font-weight: bold;
-  margin-top: 0.4rem;
+  flex: 1;
+  min-height: 0;
 }
